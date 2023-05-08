@@ -30,10 +30,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = development
 
 if development:
-    ALLOWED_HOSTS = ['localhost', 
+    ALLOWED_HOSTS = ['localhost',
                      '127.0.0.1',
                      '8000-clacif-empoweredv2-dzhq2wr08zj.ws-eu96b.gitpod.io',
-                     '8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io', 
+                     '8000-okserm-empowered-qrw26zw6fk2.ws-eu87.gitpod.io',
                      'team4-empowered.herokuapp.com/']
 else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
@@ -185,6 +185,7 @@ AUTHENTICATION_BACKENDS = (
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
+SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
 
@@ -193,16 +194,15 @@ ACCOUNT_FORMS = {
     'signup': 'home.forms.CustomSignUpForm',
 }
 AUTH_USER_MODEL = 'home.User'
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-# Settings to auth with google
-SOCIALACCOUNT_QUERY_EMAIL = True
-ACCOUNT_LOGOUT_ON_GET= True
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
