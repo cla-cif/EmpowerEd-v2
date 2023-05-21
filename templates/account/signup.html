@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load static %}
+{% load socialaccount %}
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
@@ -10,6 +12,8 @@
         <div class="row">
             <div class="col-12 reg-content">
                 <h2 class="mb-3">{% trans "Sign Up" %}</h2>
+                <a href="{% provider_login_url 'google' %}" class="btn btn-danger btn-sm" aria-label="login with your Google account"><i class='fa fa-google fa-fw' ></i> Sign up with Google</a>
+                <hr>
                 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
                     {% csrf_token %}
                     <div class="row">
