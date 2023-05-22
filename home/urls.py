@@ -7,7 +7,6 @@ urlpatterns = [
     path('', views.LandingView.as_view(), name='home'),
     path('logout/', views.logout_view),
     path('accounts/', include('allauth.urls')),
-    path('microsoft/', include('microsoft_auth.urls', namespace='microsoft')),
     path('resources/', views.ResourcesView.as_view(), name='resources'),
     path('mentors/', views.MentorsView.as_view(), name='mentors'),
     path('about/', views.AboutView.as_view(), name='about'),
