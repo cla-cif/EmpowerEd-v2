@@ -221,6 +221,11 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+MICROSOFT_AUTH_CLIENT_ID = os.environ.get('MICROSOFT_AUTH_CLIENT_ID')
+MICROSOFT_AUTH_CLIENT_SECRET = os.environ.get('MICROSOFT_AUTH_CLIENT_SECRET')
+MICROSOFT_AUTH_LOGIN_TYPE = 'ma'  # auth with microsoft account
+MICROSOFT_AUTH_LOGIN_TYPE = 'xbl'  # auth with xbox live account
+
 # Websoket stuff
 REDIS_URL = os.environ.get('REDISCLOUD_URL')
 
