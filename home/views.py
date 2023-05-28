@@ -1,10 +1,10 @@
 from django.views import generic
 from datetime import date, timedelta
-from django.contrib.auth import get_user_model, logout
+from django.contrib.auth import get_user_model
 from .models import Mentor, Resource, Parent, Student, Lesson
 from .forms import MentorProfileForm, StudentProfileForm, ParentProfileForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 
 
@@ -13,11 +13,6 @@ class LandingView(generic.TemplateView):
     A view for displaying the Home page.
     """
     template_name = "index.html"
-
-
-def logout_view(request):
-    logout(request)
-    return redirect('/')
 
 
 class ResourcesView(generic.ListView):
