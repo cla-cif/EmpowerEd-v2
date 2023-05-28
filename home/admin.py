@@ -5,6 +5,8 @@ from . import models
 from django.contrib import admin
 from .models import User, Student, Mentor, Lesson, Parent, Relationship, Resource
 
+admin.site.unregister(User)
+
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
