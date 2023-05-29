@@ -20,11 +20,21 @@ from rest_framework import routers
 from django.conf.urls.static import static
 from chat_backend.api.views import (ConversationViewSet,
                                     MessageViewSet)
+from microsoft_auth.views.login import MicrosoftLoginView
+from microsoft_auth.views.logout import MicrosoftLogoutView
+from microsoft_auth.views.callback import MicrosoftCallbackView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('messages/', include('chat_backend.urls', namespace="messages")),
     path('accounts/', include('allauth.urls')),
+    path('microsoft/', include('microsoft_auth.urls', namespace='microsoft')),
+
+    path('microsoft-auth/login/', MicrosoftLoginView.as_view(), name='microsoft_auth_login'),
+    path('microsoft-auth/logout/', MicrosoftLogoutView.as_view(), name='microsoft_auth_logout'),
+    path('microsoft-auth/callback/', MicrosoftCallbackView.as_view(), name='microsoft_auth_callback'),
+
     path('', include('home.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

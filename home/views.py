@@ -4,8 +4,14 @@ from django.contrib.auth import get_user_model
 from .models import Mentor, Resource, Parent, Student, Lesson
 from .forms import MentorProfileForm, StudentProfileForm, ParentProfileForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+
+
+@login_required
+def login_with_microsoft(request):
+    return redirect('microsoft_auth_login')
 
 
 class LandingView(generic.TemplateView):

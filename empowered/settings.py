@@ -83,6 +83,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.RemoteUserMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -182,6 +183,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.RemoteUserBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
     'microsoft_auth.backends.MicrosoftAuthenticationBackend',
 )
@@ -221,6 +223,8 @@ SOCIALACCOUNT_PROVIDERS = {
 
 MICROSOFT_AUTH_CLIENT_ID = os.environ.get('MICROSOFT_AUTH_CLIENT_ID')
 MICROSOFT_AUTH_CLIENT_SECRET = os.environ.get('MICROSOFT_AUTH_CLIENT_SECRET')
+MICROSOFT_AUTH_TENANT_ID = os.environ.get('MICROSOFT_AUTH_TENANT_ID')
+MICROSOFT_AUTH_REDIRECT_URI = "http://localhost:8000/callback/"
 MICROSOFT_AUTH_LOGIN_TYPE = 'ma'  # auth with microsoft account
 MICROSOFT_AUTH_LOGIN_TYPE = 'xbl'  # auth with xbox live account
 MICROSOFT_AUTH_LOGIN_HINT = ''
