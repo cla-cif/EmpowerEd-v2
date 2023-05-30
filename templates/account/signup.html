@@ -2,6 +2,7 @@
 {% load i18n %}
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 {% load crispy_forms_tags %}
+{% load socialaccount %}
 {% block content %}
 <div class="signup">
 <canvas class="allauth background"></canvas>
@@ -10,8 +11,7 @@
         <div class="row">
             <div class="col-12 reg-content">
                 <h2 class="mb-3">{% trans "Sign Up" %}</h2>
-                <a href="{% provider_login_url 'google' %}" class="btn btn-danger btn-sm" aria-label="login with your Google account"><i class='fa fa-google fa-fw' ></i> Sign up with Google</a>
-                <!-- <a href="{% url 'microsoft_login' %}" class="btn btn-primary btn-sm" aria-label="login with your Microsoft account"><i class='fa fa-windows fa-fw' ></i> Sign up with Microsoft</a> -->
+                <!-- <a href="{% provider_login_url 'google' %}" class="btn btn-danger btn-sm" aria-label="login with your Google account"><i class='fa fa-google fa-fw' ></i> Login with Google</a> -->
                 <hr>
                 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
                     {% csrf_token %}
